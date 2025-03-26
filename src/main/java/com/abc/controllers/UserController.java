@@ -16,9 +16,13 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
-    @Autowired
+    
     private PostService postService;
     
+    @Autowired
+    public UserController(PostService postService) {
+		this.postService = postService;
+	}
 	@GetMapping("/profile")
 	public String profileUser(Model model,HttpSession session) {
 		User user = (User) session.getAttribute("user");

@@ -15,9 +15,12 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class PostController {
 	
-	@Autowired
 	private PostService postService;
 	
+	@Autowired
+	public PostController(PostService postService) {
+		this.postService = postService;
+	}
 	@PostMapping("/post")
 	public String createPost(@RequestParam("title") String title, @RequestParam("body") String body,HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");

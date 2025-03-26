@@ -17,13 +17,14 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class HomeController {
 	
-
-    @Autowired
     private PostService postService;
-
-    @Autowired
     private FollowService followService;
-	
+    
+    @Autowired
+	public HomeController(PostService postService, FollowService followService) {
+		this.postService = postService;
+		this.followService = followService;
+	}
 	@RequestMapping(value = "/")
     public String homeController(Model model, HttpSession httpSession) {
 		User user = (User) httpSession.getAttribute("user");

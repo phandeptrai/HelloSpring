@@ -15,8 +15,14 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class AuthController {
 
-	@Autowired
+
 	private UserService userService;
+	
+	@Autowired
+	public AuthController(UserService userService) {
+		this.userService = userService;
+	}
+	
 	
 	@GetMapping("/login")
 	public String showLoginForm() {

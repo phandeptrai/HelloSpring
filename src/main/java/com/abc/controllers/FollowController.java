@@ -13,9 +13,13 @@
 	@RequestMapping("/follow")
 	public class FollowController {
 			
-		@Autowired
+		
 	    private FollowService followService;
 		
+	    @Autowired
+		public FollowController(FollowService followService) {
+			this.followService = followService;
+		}
 	    @PostMapping("/add")
 	    @ResponseBody
 	    public String followUser(@RequestParam("followingUserId")int followingUserId, @RequestParam("followedUserId") int followedUserId) {
